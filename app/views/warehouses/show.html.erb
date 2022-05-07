@@ -2,6 +2,10 @@
   <h1>Galpão: <%= @warehouse.code %></h1>
 
   <div>
+    <p><%= flash[:notice] %></p>
+  </div>
+
+  <div>
     <h3>Descrição: <%= @warehouse.description %></h3>
 
     <dl>
@@ -23,4 +27,5 @@
   </div>  
 </section>
 
+<%= link_to 'Editar', edit_warehouse_path(@warehouse.id) %>
 <%= link_to 'Voltar', root_path %>
