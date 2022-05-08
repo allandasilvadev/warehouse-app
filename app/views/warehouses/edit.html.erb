@@ -4,4 +4,6 @@
   <p><%= flash[:notice] %></p>
 </div>
 
+<p><%= link_to 'Voltar', warehouse_path(@warehouse.id) %></p>
+
 <%= render 'form' %>

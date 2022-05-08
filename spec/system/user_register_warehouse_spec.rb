@@ -42,6 +42,18 @@ describe 'Usuário cadastra um galpão' do
 
   end
 
+  it 'ou volta para tela inicial' do
+    # Arrange
+
+    # Act
+    visit root_path
+    click_on 'Cadastrar Galpão'
+    click_on 'Voltar'
+
+    # Assert
+    expect(current_path).to eq( root_path )
+  end
+
   it 'com dados incompletos' do
     # Arrange
 

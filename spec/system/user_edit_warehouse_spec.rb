@@ -59,6 +59,28 @@ describe 'Usuário edita galpão' do
   	expect(page).to have_content 'CEP: 60000-000'
   end
 
+  it 'ou volta para página detalhes' do
+    # Arrange
+    w = Warehouse.create!(
+      name: 'Aeroporto SP',
+      code: 'GRU',
+      city: 'Guarulhos',
+      area: 100_000,
+      address: 'Avenida do Aeroporto, 1000',
+      cep: '15000-000',
+      description: 'Galpão destinado para cargas internacionais'
+    )
+
+    # Act
+    visit root_path
+    click_on 'Aeroporto SP'
+    click_on 'Editar'
+    click_on 'Voltar'
+
+    # Assert
+    expect(current_path).to eq( warehouse_path(w.id) )
+  end
+
   it 'e mantém os campos obrigatórios' do
   	# Arrange
   	w = Warehouse.create!(
