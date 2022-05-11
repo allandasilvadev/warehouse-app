@@ -1,0 +1,20 @@
+<h1>Novo fornecedor</h1>
+
+<% if @supplier.errors.any? %>
+  <p>Verifique os erros abaixo.</p>
+  <ul>
+    <% @supplier.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %>
+
+<div>
+  <p><%= flash[:notice] %></p>
+</div>
+
+<div>
+	<p><%= link_to 'Voltar', suppliers_path %></p>
+</div>
+
+<%= render 'form' %>

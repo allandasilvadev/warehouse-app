@@ -1,0 +1,9 @@
+<h1>Editar Fornecedor</h1>
+
+<div>
+  <p><%= flash[:notice] %></p>
+</div>
+
+<p><%= link_to 'Voltar', supplier_path(@supplier.id) %></p>
+
+<%= render 'form' %>

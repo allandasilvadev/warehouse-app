@@ -1,0 +1,24 @@
+<section id="suppliers">
+	<h2>Fornecedores</h2>
+
+	<div>
+  	<p><%= flash[:notice] %></p>
+	</div>
+
+	<div>
+		<p><%= link_to 'Cadastrar novo fornecedor', new_supplier_path %></p>
+	</div>
+
+  <% if @suppliers.empty? %>
+    <div>
+    	<p>Não existem fornecedores cadastrados.</p>
+    </div>
+  <% else %>
+	  <% @suppliers.each do |s| %>
+		  <div>
+		  	<h3><%= link_to s.brand_name, supplier_path(s.id) %></h3>
+		  	<p><%= s.city %> - <%= s.state %></p>
+		  </div>
+		<% end %>
+  <% end %>	
+</section>

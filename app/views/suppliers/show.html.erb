@@ -1,0 +1,28 @@
+<section id="supplier">
+	<h1>Fornecedor: <%= @supplier.corporate_name %></h1>
+
+	<div>
+    <p><%= flash[:notice] %></p>
+  </div>
+
+	<div>
+		<dl>
+			<dt>Documento:</dt>
+			<dd><%= @supplier.registration_number %></dd>
+
+			<dt>Endereço:</dt>
+			<dd><%= @supplier.full_address %> - <%= @supplier.city %> - <%= @supplier.state %></dd>
+
+			<dt>E-mail:</dt>
+			<dd><%= @supplier.email %></dd>
+		</dl>
+	</div>
+
+	<div>
+		<p><%= link_to 'Editar', edit_supplier_path( @supplier.id ) %></p>
+	</div>
+
+	<div>
+		<p><%= link_to 'Voltar', root_path %></p>
+	</div>
+</section>
