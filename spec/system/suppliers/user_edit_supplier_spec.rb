@@ -6,7 +6,7 @@ describe 'Usuário edita fornecedor' do
 		Supplier.create!(
 			corporate_name: 'ACME LTDA',
 			brand_name: 'ACME',
-			registration_number: '434475160',
+			registration_number: '4344751601234',
 			full_address: 'Rua das Palmas, 100',
 			city: 'Bauru',
 			state: 'SP',
@@ -24,7 +24,7 @@ describe 'Usuário edita fornecedor' do
 
 		expect(page).to have_field('Nome Fantasia', with: 'ACME')
 		expect(page).to have_field('Razão Social', with: 'ACME LTDA')
-		expect(page).to have_field('CNPJ', with: '434475160')
+		expect(page).to have_field('CNPJ', with: '4344751601234')
 		expect(page).to have_field('Endereço', with: 'Rua das Palmas, 100')
 		expect(page).to have_field('Cidade', with: 'Bauru')
 		expect(page).to have_field('Estado', with: 'SP')
@@ -36,7 +36,7 @@ describe 'Usuário edita fornecedor' do
 		Supplier.create!(
 			corporate_name: 'ACME LTDA',
 			brand_name: 'ACME',
-			registration_number: '434475160',
+			registration_number: '4344751601234',
 			full_address: 'Rua das Palmas, 100',
 			city: 'Bauru',
 			state: 'SP',
@@ -64,7 +64,7 @@ describe 'Usuário edita fornecedor' do
 		Supplier.create!(
 			corporate_name: 'ACME LTDA',
 			brand_name: 'ACME',
-			registration_number: '434475160',
+			registration_number: '4344751601234',
 			full_address: 'Rua das Palmas, 100',
 			city: 'Bauru',
 			state: 'SP',
@@ -89,7 +89,7 @@ describe 'Usuário edita fornecedor' do
 		s = Supplier.create!(
 			corporate_name: 'ACME LTDA',
 			brand_name: 'ACME',
-			registration_number: '434475160',
+			registration_number: '4344751601234',
 			full_address: 'Rua das Palmas, 100',
 			city: 'Bauru',
 			state: 'SP',

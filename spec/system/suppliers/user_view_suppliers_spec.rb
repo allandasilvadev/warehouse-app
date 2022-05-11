@@ -20,7 +20,7 @@ describe 'Usuário vê fornecedores' do
     Supplier.create!(
       corporate_name: 'Spark Industries Brasil LTDA', 
       brand_name: 'Spark', 
-      registration_number: '2412154861', 
+      registration_number: '2412154861123', 
       full_address: 'Torre da industria, 1', 
       city: 'Teresina', 
       state: 'PI', 
@@ -30,7 +30,7 @@ describe 'Usuário vê fornecedores' do
     Supplier.create!(
       corporate_name: 'ACME LTDA', 
       brand_name: 'ACME', 
-      registration_number: '434475160', 
+      registration_number: '4344751604824', 
       full_address: 'Av das Palmas, 100', 
       city: 'Bauru', 
       state: 'SP', 

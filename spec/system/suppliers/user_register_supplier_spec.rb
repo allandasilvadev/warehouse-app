@@ -27,7 +27,7 @@ describe 'Usuário cadastra um fornecedor' do
     click_on 'Cadastrar novo fornecedor'
     fill_in 'Nome Fantasia', with: 'ACME'
     fill_in 'Razão Social', with: 'ACME LTDA'
-    fill_in 'CNPJ', with: '4551124845'
+    fill_in 'CNPJ', with: '4551124845123'
     fill_in 'Endereço', with: 'Rua das Palmas, 100'
     fill_in 'Cidade', with: 'Bauru'
     fill_in 'Estado', with: 'SP'
@@ -37,7 +37,7 @@ describe 'Usuário cadastra um fornecedor' do
     # Assert
     expect(page).to have_content 'Fornecedor cadastrado com sucesso.'
     expect(page).to have_content 'ACME LTDA'
-    expect(page).to have_content 'Documento: 4551124845'
+    expect(page).to have_content 'Documento: 4551124845123'
     expect(page).to have_content 'Endereço: Rua das Palmas, 100 - Bauru - SP'
     expect(page).to have_content 'E-mail: vendas@acme.com.br'
 

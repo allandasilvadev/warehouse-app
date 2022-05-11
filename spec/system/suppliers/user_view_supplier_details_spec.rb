@@ -6,7 +6,7 @@ describe 'Usuário vê detalhes do fornecedor' do
 		Supplier.create!(
 			corporate_name: 'ACME LTDA',
 			brand_name: 'ACME',
-			registration_number: '4228126848',
+			registration_number: '4228126848123',
 			full_address: 'Av das Palmas, 100',
 			city: 'Bauru',
 			state: 'SP',
@@ -20,7 +20,7 @@ describe 'Usuário vê detalhes do fornecedor' do
 
 		# Assert
 		expect(page).to have_content 'ACME LTDA'
-		expect(page).to have_content 'Documento: 4228126848'
+		expect(page).to have_content 'Documento: 4228126848123'
 		expect(page).to have_content 'Endereço: Av das Palmas, 100 - Bauru - SP'
 		expect(page).to have_content 'E-mail: contato@acme.com'
 
@@ -31,7 +31,7 @@ describe 'Usuário vê detalhes do fornecedor' do
 		Supplier.create!(
 			corporate_name: 'ACME LTDA',
 			brand_name: 'ACME',
-			registration_number: '4228126848',
+			registration_number: '4228126848123',
 			full_address: 'Av das Palmas, 100',
 			city: 'Bauru',
 			state: 'SP',
