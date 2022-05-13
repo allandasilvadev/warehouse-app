@@ -1,0 +1,19 @@
+<div>
+	<p><%= flash[:notice] %></p>
+</div>
+
+<h1><%= @product_model.name %></h1>
+
+<dl>
+	<dt>Fornecedor:</dt>
+	<dd><%= @product_model.supplier.brand_name %></dd>
+
+	<dt>SKU:</dt>
+	<dd><%= @product_model.sku %></dd>
+
+	<dt>Dimensões:</dt>
+	<dd><%= @product_model.height %>cm X <%= @product_model.width %>cm X <%= @product_model.depth %>cm</dd>
+
+	<dt>Peso:</dt>
+	<dd><%= @product_model.weight %>g</dd>
+</dl>
