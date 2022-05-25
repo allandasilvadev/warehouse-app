@@ -8,4 +8,6 @@ Rails.application.routes.draw do
   authenticate :user do
     resources :product_models, only: [:index, :show, :new, :create]
   end
+
+  resources :orders, only: [:new, :create, :show]
 end
