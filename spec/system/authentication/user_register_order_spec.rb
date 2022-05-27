@@ -54,7 +54,7 @@ describe 'Usuário cadastra um pedido' do
 			email: 'contato@acme.com'
 		)
 
-        
+        allow(SecureRandom).to receive(:alphanumeric).with(8).and_return('ABC12345')
 
         # Act
         login_as(user)
@@ -67,6 +67,7 @@ describe 'Usuário cadastra um pedido' do
 
         # Assert
         expect(page).to have_content 'Pedido registrado com sucesso.'
+        expect(page).to have_content 'Pedido ABC12345'
         expect(page).to have_content 'Galpão destino: GRU | Aeroporto SP'
         expect(page).to have_content 'Fornecedor: ACME LTDA'
         expect(page).to have_content 'Responsável: João da Silva - joao@email.com'
