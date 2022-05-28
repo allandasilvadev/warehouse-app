@@ -12,6 +12,13 @@
 
   <dt><%= Order.human_attribute_name(:estimated_delivery_date) %>:</dt>
   <dd><%= I18n.localize(@order.estimated_delivery_date, format: :default) %></dd>
+
+  <dt>Status do pedido:</dt>
+  <dd><%= I18n.translate( @order.status ) %></dd>
 </dl>
 
+<% if @order.pending? %>
+  <%= button_to 'Marcar como entregue', delivered_order_path( @order.id ) %>
+  <%= button_to 'Marcar como cancelado', canceled_order_path( @order.id ) %>
+<% end %>
 <%= link_to 'Editar', edit_order_path( @order.id ) %>

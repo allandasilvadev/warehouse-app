@@ -38,21 +38,24 @@ describe 'Usuário vê seus próprios pedidos' do
         user: joao,
         warehouse: warehouse,
         supplier: supplier,
-        estimated_delivery_date: 1.day.from_now
+        estimated_delivery_date: 1.day.from_now,
+        status: 'pending'
     )
 
     second_order = Order.create!(
         user: maria,
         warehouse: warehouse,
         supplier: supplier,
-        estimated_delivery_date: 1.day.from_now
+        estimated_delivery_date: 1.day.from_now,
+        status: 'delivered'
     )
 
     third_order = Order.create!(
         user: joao,
         warehouse: warehouse,
         supplier: supplier,
-        estimated_delivery_date: 1.week.from_now
+        estimated_delivery_date: 1.week.from_now,
+        status: 'canceled'
     )
     # Act
     login_as(joao)
@@ -60,8 +63,11 @@ describe 'Usuário vê seus próprios pedidos' do
     click_on 'Meus Pedidos'
     # Assert
     expect(page).to have_content first_order.code
+    expect(page).to have_content 'Pendente'
     expect(page).not_to have_content second_order.code
+    expect(page).not_to have_content 'Entregue'
     expect(page).to have_content third_order.code
+    expect(page).to have_content 'Cancelado'
   end
 
   it 'e visita um pedido' do

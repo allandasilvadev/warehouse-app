@@ -72,5 +72,6 @@ describe 'Usuário cadastra um pedido' do
         expect(page).to have_content 'Fornecedor: ACME LTDA'
         expect(page).to have_content 'Responsável: João da Silva - joao@email.com'
         expect(page).to have_content 'Data prevista de entrega: 20/12/2022'
+        expect(page).to have_content 'Status do pedido: Pendente'
     end
 end
