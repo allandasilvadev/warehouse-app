@@ -165,4 +165,80 @@ describe 'Usuário vê seus próprios pedidos' do
     expect(current_path).to eq root_path
     expect(page).to have_content 'Você não possui acesso a esse pedido.'
   end
+
+  it 'e vê itens do pedido' do
+    # Arrange
+    user = User.create!(name:'João', email: 'joao@email.com', password: '123456')
+
+    warehouse = Warehouse.new(
+        name: 'Aeroporto SP', 
+        code: 'GRU', 
+        city: 'Guarulhos', 
+        area: 100_000, 
+        address: 'Avenida do Aeroporto, 1000',
+        cep: '15000-000',
+        description: 'Galpão destinado para cargas internacionais'
+      )
+
+      supplier = Supplier.create!(
+        corporate_name: 'ACME LTDA',
+        brand_name: 'ACME',
+        registration_number: '2486284845486',
+        full_address: 'Rua das Palmas, 248',
+        city: 'Bauru',
+        state: 'SP',
+        email: 'vendas@acme.com'
+    )
+
+    proda = ProductModel.create!(
+			name: 'TV 32', 
+			weight: 8000, 
+			width: 70, 
+			height: 45, 
+			depth: 10, 
+			sku: 'TV32-SAMSU-XPTO90123', 
+			supplier: supplier
+		)
+
+		prodb = ProductModel.create!(
+			name: 'SoundBar 7.1 Surrond', 
+			weight: 3000, 
+			width: 80, 
+			height: 15, 
+			depth: 20, 
+			sku: 'SOU71-SAMSU-NOISE123', 
+			supplier: supplier
+		)
+
+    prodc = ProductModel.create!(
+			name: 'TV Colorida 20 polegadas', 
+			weight: 10_000, 
+			width: 80, 
+			height: 15, 
+			depth: 20, 
+			sku: 'SOU71-SAMSU-NOISE111', 
+			supplier: supplier
+		)
+
+    order = Order.create!(
+        user: user,
+        warehouse: warehouse,
+        supplier: supplier,
+        estimated_delivery_date: 1.day.from_now
+    )
+
+    OrderItem.create!(product_model: proda, order: order, quantity: 20 )
+    OrderItem.create!(product_model: prodc, order: order, quantity: 12 )
+
+    # Act
+    login_as(user)
+    visit root_path
+    click_on 'Meus Pedidos'
+    click_on order.code
+
+    # Assert
+    expect(page).to have_content 'Itens do pedido'
+    expect(page).to have_content '20 x TV 32'
+    expect(page).to have_content '12 x TV Colorida 20 polegadas'
+  end
 end
