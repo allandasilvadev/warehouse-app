@@ -32,6 +32,12 @@
   <p><%= button_to('Remover', warehouse_path(@warehouse.id), method: :delete) %></p>
 </div>
 
+<div>
+  <h2>Itens em estoque:</h2>
+  <% @stocks.each_pair do |pm, quantity| %>
+    <%= quantity %> x <%= pm.sku %>
+  <% end %>
+</div>
 
 <div>
   <p><%= link_to 'Voltar', root_path %></p>
