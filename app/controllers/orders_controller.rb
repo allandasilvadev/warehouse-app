@@ -55,6 +55,11 @@ class OrdersController < ApplicationController
 
     def delivered
         @order = Order.find(params[:id])
+        @order.order_items.each do |item|
+            item.quantity.times do
+                StockProduct.create!(order: @order, product_model: item.product_model, warehouse: @order.warehouse)
+            end
+        end
         if @order.user != current_user
             return redirect_to root_path
         end

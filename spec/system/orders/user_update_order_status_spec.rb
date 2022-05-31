@@ -25,6 +25,16 @@ describe 'Usuário informa novo status do pedido' do
         email: 'vendas@acme.com'
     )
 
+    product = ProductModel.create!(
+      name: 'Cadeira Gamer', 
+      weight: 8000, 
+      width: 70, 
+      height: 100, 
+      depth: 75, 
+      sku: 'CADE-GAMER-123456842', 
+      supplier: supplier
+    )
+
     order = Order.create!(
         user: user,
         warehouse: warehouse,
@@ -32,6 +42,8 @@ describe 'Usuário informa novo status do pedido' do
         estimated_delivery_date: 1.day.from_now,
         status: :pending
     )
+
+    OrderItem.create!(order: order, product_model: product, quantity: 5)
 
     # Act
     login_as(user)
@@ -45,6 +57,8 @@ describe 'Usuário informa novo status do pedido' do
     expect(page).to have_content 'Status do pedido: Entregue'
     expect(page).not_to have_button 'Marcar como entregue'
     expect(page).not_to have_button 'Marcar como cancelado'
+    expect(StockProduct.count).to eq 5
+    expect(StockProduct.where(product_model: product, warehouse: warehouse).count).to eq 5 
   end
   it 'e o pedido foi cancelado' do
     # Arrange
@@ -70,6 +84,16 @@ describe 'Usuário informa novo status do pedido' do
         email: 'vendas@acme.com'
     )
 
+    product = ProductModel.create!(
+      name: 'Cadeira Gamer', 
+      weight: 8000, 
+      width: 70, 
+      height: 100, 
+      depth: 75, 
+      sku: 'CADE-GAMER-123456842', 
+      supplier: supplier
+    )
+
     order = Order.create!(
         user: user,
         warehouse: warehouse,
@@ -77,6 +101,8 @@ describe 'Usuário informa novo status do pedido' do
         estimated_delivery_date: 1.day.from_now,
         status: :pending
     )
+
+    OrderItem.create!(order: order, product_model: product, quantity: 5)
 
     # Act
     login_as(user)
@@ -88,5 +114,6 @@ describe 'Usuário informa novo status do pedido' do
     # Assert
     expect(current_path).to eq order_path( order.id )
     expect(page).to have_content 'Status do pedido: Cancelado'
+    expect(StockProduct.count).to eq 0
   end
 end
