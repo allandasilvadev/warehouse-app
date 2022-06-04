@@ -155,7 +155,7 @@ RSpec.describe Order, type: :model do
         user: user,
         warehouse: warehouse,
         supplier: supplier,
-        estimated_delivery_date: '2022-06-01'
+        estimated_delivery_date: '2022-10-01'
       )
 
       # Act
